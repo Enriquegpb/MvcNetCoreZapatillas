@@ -17,5 +17,26 @@ namespace MvcNetCoreZapatillas.Repositories
         {
             this.context = context;
         }
+
+        public async Task <List<Zapatilla>> GetZapatillas()
+        {
+            return await this.context.Zapatillas.ToListAsync();
+        }
+
+        public async Task<Zapatilla> FindZapatilla(int idzapatilla)
+        {
+            return await this.context.Zapatillas.FirstOrDefaultAsync(x => x.IdProducto == idzapatilla);
+        }
+
+        public async Task<VistaImagenesZapatilla> GetImagensAsync(int posicion, int idzapatilla)
+        {
+            return await this.context.VistaImagenZapatilla.FirstOrDefaultAsync(x => x.IdProducto == idzapatilla && x.Posicion == posicion);
+        }
+
+        public int GetNumeroTotalImagenesGaleria(int idzapatilla)
+        {
+            return this.context.VistaImagenZapatilla.Count(x => x.IdProducto == idzapatilla);
+        }
+
     }
 }

@@ -9,5 +9,6 @@ namespace MvcNetCoreZapatillas.Data
             : base(options) { }
         public DbSet<Zapatilla> Zapatillas { get; set; }
         public DbSet<ImagenZapatilla> ImagenesZapatillas { get; set; }
+        public DbSet<VistaImagenesZapatilla> VistaImagenZapatilla { get; set; }
     }
 }

@@ -1,0 +1,53 @@
+﻿@model MvcNetCoreZapatillas.Models.Zapatilla
+
+@{
+    ViewData["Title"] = "DetailsPartial";
+}
+@*@section Scripts{
+    <script>
+        $(document).ready(function () {
+            var request = "/Zapatillas/DetailsPartial/?idzapatilla=" + @Model.IdProducto
+                $("#detallesdraw").load(request);
+        });
+    </script>
+}*@
+<table class="table table-bordered">
+    <tr><li class="list-group-item">Nombre: @Model.Nombre</li></tr>
+    <tr><li class="list-group-item">@Model.Descripcion</li></tr>
+    <tr><li class="list-group-item">Precio: @Model.Precio</li></tr>
+    <tr><ul class="list-group list-group-horizontal">
+    <li class="list-group-item">
+        <a asp-controller="Paginacion"
+           asp-action="PaginarRegistroVistaDepartamento"
+           asp-route-posicion="1">
+            Primero
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="Paginacion"
+           asp-action="PaginarRegistroVistaDepartamento"
+           asp-route-posicion="@ViewData["ANTERIOR"]">
+            Anterior
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="Paginacion"
+           asp-action="PaginarRegistroVistaDepartamento"
+           asp-route-posicion="@ViewData["SIGUIENTE"]">
+            Siguiente
+        </a>
+    </li>
+    <li class="list-group-item">
+        <a asp-controller="Paginacion"
+           asp-action="PaginarRegistroVistaDepartamento"
+           asp-route-posicion="@ViewData["ULTIMO"]">
+            Ultimo
+        </a>
+    </li>
+</ul></tr>
+</table>
+
+<div>
+    @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+    <a asp-action="Index">Volver a Index</a>
+</div>

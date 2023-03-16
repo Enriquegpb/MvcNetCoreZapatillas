@@ -1,0 +1,11 @@
+﻿@model Zapatilla
+@section Scripts{
+    <script>
+        $(document).ready(function(){
+            var request ="/Zapatillas/DetailsPartial/?idzapatilla="+ @Model.IdProducto
+            $("#detallesdraw").load(request);
+        });
+    </script>
+}
+
+<div id="detallesdraw"></div>
